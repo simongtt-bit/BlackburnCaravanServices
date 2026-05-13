@@ -1,0 +1,16 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlackburnCaravanServices", "BlackburnCaravanServices\BlackburnCaravanServices.csproj", "{01EE9153-F994-4CAA-A5FC-C3DE5B6C1928}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{01EE9153-F994-4CAA-A5FC-C3DE5B6C1928}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{01EE9153-F994-4CAA-A5FC-C3DE5B6C1928}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{01EE9153-F994-4CAA-A5FC-C3DE5B6C1928}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{01EE9153-F994-4CAA-A5FC-C3DE5B6C1928}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
