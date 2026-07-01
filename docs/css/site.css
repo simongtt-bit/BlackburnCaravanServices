@@ -98,12 +98,13 @@ img {
   left: 0;
   bottom: -8px;
   width: 0;
-  height: 2px;
+  height: 3px;
   background: var(--colour-amber);
   transition: width 0.25s ease;
 }
 
-.site-nav a:hover::after {
+.site-nav a:hover::after,
+.site-nav a.active::after {
   width: 100%;
 }
 
@@ -204,10 +205,7 @@ h3 {
                   rgba(8, 25, 43, 0.92),
                   rgba(8, 25, 43, 0.72)
           ),
-          url("../images/caravan-hero.jpg");
-
-  background-size: cover;
-  background-position: center;
+          url("../images/caravan-hero.jpg") center / cover no-repeat;
   padding: 140px 0;
   min-height: 720px;
   display: flex;
@@ -284,9 +282,9 @@ h3 {
   margin-bottom: 4px;
 }
 
-/* Premium page hero */
+/* Shared internal page hero */
 
-.page-hero-premium {
+.page-hero {
   position: relative;
   overflow: hidden;
   background:
@@ -295,15 +293,12 @@ h3 {
                   rgba(8, 25, 43, 0.92),
                   rgba(8, 25, 43, 0.68)
           ),
-          url("../images/caravan-hero.jpg");
-
-  background-size: cover;
-  background-position: center;
+          url("../images/caravan-hero.jpg") center / cover no-repeat;
   color: white;
   padding: 140px 0 220px;
 }
 
-.page-hero-premium::after {
+.page-hero::after {
   content: "";
   position: absolute;
   left: -2px;
@@ -324,13 +319,13 @@ h3 {
   max-width: 760px;
 }
 
-.page-hero-premium h1 {
+.page-hero h1 {
   max-width: 700px;
   color: white;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
-.page-hero-premium .page-intro {
+.page-hero .page-intro {
   max-width: 640px;
   color: rgba(255, 255, 255, 0.92);
   font-size: 1.25rem;
@@ -368,7 +363,7 @@ h3 {
 }
 
 .hero-feature-item:hover {
-  transform: translateY(-8px);
+  transform: translateY(-6px);
   box-shadow:
           0 20px 40px rgba(0, 0, 0, 0.08),
           0 40px 80px rgba(16, 42, 67, 0.16);
@@ -453,13 +448,13 @@ h3 {
   border: 1px solid var(--colour-border);
 }
 
-.contact-panel p {
-  line-height: 1.7;
+.contact-panel p,
+.contact-panel strong {
   color: #000;
 }
 
-.contact-panel strong {
-  color: #000;
+.contact-panel p {
+  line-height: 1.7;
 }
 
 /* Services */
@@ -793,7 +788,7 @@ h3 {
     min-height: auto;
   }
 
-  .page-hero-premium {
+  .page-hero {
     padding: 120px 0 180px;
   }
 
