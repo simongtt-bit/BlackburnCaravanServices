@@ -21,6 +21,18 @@ New-Item -ItemType Directory -Path $OutputDir | Out-Null
 
 Copy-Item "BlackburnCaravanServices\wwwroot\*" $OutputDir -Recurse -Force
 
+$CssPath = Join-Path $OutputDir "css\site.css"
+
+if (Test-Path $CssPath) {
+    $Css = Get-Content $CssPath -Raw
+
+    $Css = $Css `
+        -replace 'url\("/images/', 'url("../images/' `
+        -replace "url\('/images/", "url('../images/"
+
+    Set-Content -Path $CssPath -Value $Css -Encoding UTF8
+}
+
 foreach ($Page in $Pages) {
     $FullUrl = "$ProjectUrl$($Page.Url)"
     $OutputPath = Join-Path $OutputDir $Page.Output
@@ -39,12 +51,15 @@ foreach ($Page in $Pages) {
         -replace 'href="/Contact/Contact"', 'href="contact.html"' `
         -replace 'href="/css/', 'href="css/' `
         -replace 'href="/lib/', 'href="lib/' `
+        -replace 'href="/favicon.ico"', 'href="favicon.ico"' `
         -replace 'src="/js/', 'src="js/' `
         -replace 'src="/lib/', 'src="lib/' `
         -replace 'src="/images/', 'src="images/' `
-        -replace 'url\("/images/', 'url("images/'
+        -replace 'url\("/images/', 'url("../images/'
 
     Set-Content -Path $OutputPath -Value $Html -Encoding UTF8
 }
+
+New-Item -Path ".\docs\.nojekyll" -ItemType File -Force | Out-Null
 
 Write-Host "Static site exported to /docs"
