@@ -1,23 +1,30 @@
 ﻿@page
 @model RepairsModel
+@using BlackburnCaravanServices.Models
 @{
     ViewData["Title"] = "Caravan Repairs";
 }
 
-<section class="page-hero">
-    <div class="container">
-        <p class="eyebrow">Caravan repairs</p>
-        <h1>Specialist caravan repairs in Blackburn</h1>
-        <p class="page-intro">
-            From damp repairs and bodywork to floor delamination and internal woodwork, our experienced team can help get your caravan back to its best.
-        </p>
-    </div>
-</section>
+@{
+    var heroModel = new PageHeroModel(
+        "Repairs",
+        "Expert caravan repairs",
+        "From damp repairs and bodywork to internal repairs, we help get your caravan back to its best.",
+        new[]
+        {
+            new PageHeroFeatureModel("Damp repairs", "Professional damp detection and repair work."),
+            new PageHeroFeatureModel("Bodywork", "Panel, exterior and accident damage repairs."),
+            new PageHeroFeatureModel("General repairs", "All aspects of caravan repairs undertaken by our team.")
+        });
+}
+
+<partial name="_PageHero" model="heroModel" />
 
 <section class="section">
     <div class="container service-detail-grid">
         <div>
             <h2>Repairs carried out by experienced specialists</h2>
+
             <p class="section-intro">
                 Blackburn Caravan Services has a dedicated repairs workshop for structural, internal and external caravan repair work.
                 Whether you need damp damage repaired, body panels restored or internal fittings repaired, we provide clear advice and practical solutions.
@@ -33,16 +40,34 @@
             </div>
 
             <div class="hero-actions">
-                <a asp-page="/Contact" class="button button-primary">Request a repair quote</a>
-                <a href="tel:01254241693" class="button button-secondary">Call 01254 241693</a>
+                <a asp-page="/Contact/Contact" class="button button-primary">
+                    Request a repair quote
+                </a>
+
+                <a href="tel:01254241693" class="button button-secondary">
+                    Call 01254 241693
+                </a>
             </div>
         </div>
 
         <aside class="contact-panel">
             <h3>Repairs department</h3>
-            <p><strong>Phone:</strong><br />01254 241693</p>
-            <p><strong>Email:</strong><br />info@blackburncaravanservices.co.uk</p>
-            <p><strong>Address:</strong><br />Unit D2, Percliff Way, Blackburn, BB1 5PF</p>
+
+            <p>
+                <strong>Phone:</strong><br />
+                01254 241693
+            </p>
+
+            <p>
+                <strong>Email:</strong><br />
+                info@blackburncaravanservices.co.uk
+            </p>
+
+            <p>
+                <strong>Address:</strong><br />
+                Unit D2, Percliff Way,<br />
+                Blackburn, BB1 5PF
+            </p>
         </aside>
     </div>
 </section>
@@ -58,7 +83,8 @@
             <article class="service-card">
                 <h3>Damp repairs</h3>
                 <p>
-                    Damp can quickly lead to further damage if left untreated. We can inspect the affected areas and advise on the best repair route.
+                    Damp can quickly lead to further damage if left untreated.
+                    We can inspect the affected areas and advise on the best repair route.
                 </p>
             </article>
 

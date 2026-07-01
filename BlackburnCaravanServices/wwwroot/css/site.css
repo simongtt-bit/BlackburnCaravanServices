@@ -6,7 +6,9 @@
   --colour-light: #ffffff;
   --colour-text: #1f2933;
   --colour-muted: #52606d;
+  --colour-border: #e5e7eb;
   --shadow: 0 20px 40px rgba(16, 42, 67, 0.12);
+  --shadow-soft: 0 10px 24px rgba(16, 42, 67, 0.08);
   --radius: 18px;
 }
 
@@ -14,18 +16,26 @@
   box-sizing: border-box;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0;
   font-family: Arial, Helvetica, sans-serif;
   color: var(--colour-text);
   background:
-          radial-gradient(circle at top left, rgba(31,95,139,0.03), transparent 40%),
+          radial-gradient(circle at top left, rgba(31, 95, 139, 0.03), transparent 40%),
           #ffffff;
 }
 
 main {
   min-height: 70vh;
   overflow-x: hidden;
+}
+
+img {
+  max-width: 100%;
 }
 
 .container {
@@ -42,7 +52,7 @@ main {
   background: rgba(16, 42, 67, 0.88);
   backdrop-filter: blur(14px);
   color: white;
-  border-bottom: 1px solid rgba(255,255,255,0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 .header-inner {
@@ -61,10 +71,6 @@ main {
   font-weight: 800;
   text-decoration: none;
   font-size: 1.25rem;
-}
-
-.brand-icon {
-  font-size: 1.8rem;
 }
 
 .brand-text {
@@ -157,6 +163,8 @@ h3 {
   border-radius: 999px;
   font-weight: 800;
   text-decoration: none;
+  border: 0;
+  cursor: pointer;
   transition:
           transform 0.25s ease,
           box-shadow 0.25s ease,
@@ -185,7 +193,7 @@ h3 {
   padding-bottom: 4px;
 }
 
-/* Hero */
+/* Home hero */
 
 .hero {
   position: relative;
@@ -197,6 +205,7 @@ h3 {
                   rgba(8, 25, 43, 0.72)
           ),
           url("/images/caravan-hero.jpg");
+
   background-size: cover;
   background-position: center;
   padding: 140px 0;
@@ -233,7 +242,7 @@ h3 {
 }
 
 .hero h1 {
-  text-shadow: 0 4px 20px rgba(0,0,0,0.35);
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
 
 .hero-text {
@@ -251,13 +260,13 @@ h3 {
 }
 
 .hero-card {
-  background: rgba(255,255,255,0.96);
+  background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(8px);
-  border: 1px solid rgba(255,255,255,0.35);
-  color: var(--colour-text);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  color: #000;
   padding: 40px;
   border-radius: 24px;
-  box-shadow: 0 30px 60px rgba(0,0,0,0.22);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
 }
 
 .hero-card h2 {
@@ -267,12 +276,126 @@ h3 {
 
 .hero-card p,
 .hero-card strong {
-  color: #000 !important;
+  color: #000;
 }
 
 .hero-card strong {
   display: block;
   margin-bottom: 4px;
+}
+
+/* Premium page hero */
+
+.page-hero-premium {
+  position: relative;
+  overflow: hidden;
+  background:
+          linear-gradient(
+                  110deg,
+                  rgba(8, 25, 43, 0.92),
+                  rgba(8, 25, 43, 0.68)
+          ),
+          url("/images/caravan-hero.jpg");
+
+  background-size: cover;
+  background-position: center;
+  color: white;
+  padding: 140px 0 220px;
+}
+
+.page-hero-premium::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -1px;
+  height: 160px;
+  background: white;
+  clip-path: polygon(0 70%, 35% 45%, 100% 15%, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.page-hero-inner {
+  position: relative;
+  z-index: 2;
+}
+
+.page-hero-content {
+  max-width: 760px;
+}
+
+.page-hero-premium h1 {
+  max-width: 700px;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
+}
+
+.page-hero-premium .page-intro {
+  max-width: 640px;
+  color: rgba(255, 255, 255, 0.92);
+  font-size: 1.25rem;
+  line-height: 1.7;
+}
+
+.hero-feature-strip {
+  position: relative;
+  z-index: 5;
+  margin-top: -90px;
+  padding-bottom: 80px;
+}
+
+.hero-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.hero-feature-item {
+  display: flex;
+  gap: 18px;
+  align-items: flex-start;
+  background: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(12px);
+  border-radius: 22px;
+  padding: 32px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow:
+          0 10px 30px rgba(0, 0, 0, 0.05),
+          0 30px 60px rgba(16, 42, 67, 0.12);
+  transition:
+          transform 0.25s ease,
+          box-shadow 0.25s ease;
+}
+
+.hero-feature-item:hover {
+  transform: translateY(-8px);
+  box-shadow:
+          0 20px 40px rgba(0, 0, 0, 0.08),
+          0 40px 80px rgba(16, 42, 67, 0.16);
+}
+
+.hero-feature-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: var(--colour-amber);
+  color: #111827;
+  display: grid;
+  place-items: center;
+  font-weight: 900;
+  flex: 0 0 auto;
+}
+
+.hero-feature-item h3 {
+  margin: 0 0 8px;
+  font-size: 1.1rem;
+  color: var(--colour-navy);
+}
+
+.hero-feature-item p {
+  margin: 0;
+  line-height: 1.7;
+  color: var(--colour-muted);
 }
 
 /* Sections */
@@ -327,7 +450,7 @@ h3 {
   border-radius: 24px;
   padding: 36px;
   box-shadow: var(--shadow);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--colour-border);
 }
 
 .contact-panel p {
@@ -337,16 +460,6 @@ h3 {
 
 .contact-panel strong {
   color: #000;
-}
-
-@media (max-width: 900px) {
-  .service-detail-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .feature-list {
-    grid-template-columns: 1fr;
-  }
 }
 
 /* Services */
@@ -361,10 +474,10 @@ h3 {
   position: relative;
   padding: 36px;
   background: white;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--colour-border);
   border-radius: 24px;
   box-shadow:
-          0 4px 10px rgba(0,0,0,0.02),
+          0 4px 10px rgba(0, 0, 0, 0.02),
           0 20px 40px rgba(16, 42, 67, 0.04);
   overflow: hidden;
   transition:
@@ -389,7 +502,7 @@ h3 {
   transform: translateY(-8px);
   border-color: rgba(245, 158, 11, 0.3);
   box-shadow:
-          0 10px 30px rgba(0,0,0,0.05),
+          0 10px 30px rgba(0, 0, 0, 0.05),
           0 30px 60px rgba(16, 42, 67, 0.08);
 }
 
@@ -435,9 +548,9 @@ h3 {
   background: white;
   border-radius: 28px;
   overflow: hidden;
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--colour-border);
   box-shadow:
-          0 4px 10px rgba(0,0,0,0.02),
+          0 4px 10px rgba(0, 0, 0, 0.02),
           0 20px 40px rgba(16, 42, 67, 0.05);
   transition:
           transform 0.25s ease,
@@ -447,7 +560,7 @@ h3 {
 .caravan-card:hover {
   transform: translateY(-8px);
   box-shadow:
-          0 10px 30px rgba(0,0,0,0.05),
+          0 10px 30px rgba(0, 0, 0, 0.05),
           0 30px 60px rgba(16, 42, 67, 0.1);
 }
 
@@ -493,7 +606,7 @@ h3 {
   gap: 16px;
   margin-top: 28px;
   padding-top: 22px;
-  border-top: 1px solid #e5e7eb;
+  border-top: 1px solid var(--colour-border);
 }
 
 .caravan-footer strong {
@@ -518,7 +631,7 @@ h3 {
   border-radius: 999px;
   font-size: 0.8rem;
   font-weight: 800;
-  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.15);
 }
 
 /* Trust */
@@ -540,7 +653,7 @@ h3 {
   padding: 20px;
   border-radius: 14px;
   font-weight: 800;
-  box-shadow: 0 10px 24px rgba(16, 42, 67, 0.08);
+  box-shadow: var(--shadow-soft);
   transition:
           transform 0.25s ease,
           box-shadow 0.25s ease;
@@ -548,115 +661,10 @@ h3 {
 
 .trust-list div:hover {
   transform: translateY(-6px);
-  box-shadow: 0 20px 40px rgba(16, 42, 67, 0.12);
+  box-shadow: var(--shadow);
 }
 
-/* Page hero */
-.page-hero {
-  position: relative;
-  overflow: hidden;
-  background:
-          linear-gradient(
-                  110deg,
-                  rgba(8, 25, 43, 0.92),
-                  rgba(8, 25, 43, 0.66)
-          ),
-          url("/images/caravan-hero.jpg");
-
-  background-size: cover;
-  background-position: center;
-  color: white;
-  padding: 130px 0 190px;
-}
-
-.page-hero::after {
-  content: "";
-  position: absolute;
-  left: -2px;
-  right: -2px;
-  bottom: -1px;
-  height: 140px;
-  background: white;
-  clip-path: polygon(0 65%, 100% 15%, 100% 100%, 0 100%);
-  pointer-events: none;
-}
-
-.page-hero .container {
-  position: relative;
-  z-index: 2;
-}
-
-.page-hero h1 {
-  max-width: 760px;
-  color: white;
-  text-shadow: 0 4px 20px rgba(0,0,0,0.35);
-}
-
-.page-intro {
-  max-width: 720px;
-  font-size: 1.2rem;
-  line-height: 1.7;
-  color: rgba(255,255,255,0.9);
-}
-
-/* Footer */
-
-.site-footer {
-  background: var(--colour-navy);
-  color: white;
-  margin-top: 80px;
-  padding: 48px 0;
-}
-
-.footer-inner {
-  display: flex;
-  justify-content: space-between;
-  gap: 32px;
-  flex-wrap: wrap;
-}
-
-.site-footer p {
-  margin: 8px 0;
-  color: rgba(255,255,255,0.75);
-}
-
-/* Responsive */
-
-@media (max-width: 900px) {
-  .container {
-    width: min(100% - 32px, 100%);
-  }
-
-  .header-inner {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 20px 0;
-  }
-
-  .hero {
-    padding: 100px 0;
-    min-height: auto;
-  }
-
-  .hero-grid,
-  .trust-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .service-grid,
-  .caravan-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section-heading-split {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  h1 {
-    font-size: clamp(3rem, 14vw, 4.8rem);
-  }
-}
+/* Contact */
 
 .opening-hours {
   display: grid;
@@ -684,7 +692,7 @@ h3 {
   padding: 12px;
   border-radius: 24px;
   box-shadow: var(--shadow);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--colour-border);
 }
 
 .map-card iframe {
@@ -700,7 +708,7 @@ h3 {
   padding: 40px;
   border-radius: 24px;
   box-shadow: var(--shadow);
-  border: 1px solid #e5e7eb;
+  border: 1px solid var(--colour-border);
 }
 
 .form-grid {
@@ -740,8 +748,82 @@ h3 {
   box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
 }
 
-@media (max-width: 900px) {
-  .form-grid {
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .hero-grid,
+  .service-detail-grid,
+  .trust-grid {
     grid-template-columns: 1fr;
+  }
+
+  .hero-card,
+  .contact-panel {
+    max-width: 640px;
+  }
+
+  .service-grid,
+  .caravan-grid,
+  .hero-feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .container {
+    width: min(100% - 32px, 100%);
+  }
+
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  h1 {
+    font-size: clamp(3rem, 14vw, 4.8rem);
+  }
+
+  .hero {
+    padding: 100px 0 140px;
+    min-height: auto;
+  }
+
+  .page-hero-premium {
+    padding: 120px 0 180px;
+  }
+
+  .hero-feature-strip {
+    margin-top: -60px;
+  }
+
+  .hero-feature-item {
+    padding: 24px;
+  }
+
+  .feature-list,
+  .form-grid,
+  .service-grid,
+  .caravan-grid,
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-heading-split {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .opening-hours div {
+    flex-direction: column;
+    gap: 4px;
   }
 }

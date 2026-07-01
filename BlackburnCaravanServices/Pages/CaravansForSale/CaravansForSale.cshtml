@@ -1,18 +1,22 @@
 ﻿@page
 @model CaravansForSaleModel
+@using BlackburnCaravanServices.Models
 @{
     ViewData["Title"] = "Caravans for Sale";
+
+    var heroModel = new PageHeroModel(
+        "Used caravans",
+        "Quality used caravans",
+        "Browse our latest used caravans or contact our sales team to discuss what you are looking for.",
+        new[]
+        {
+            new PageHeroFeatureModel("Fully inspected", "All caravans are checked before being offered for sale."),
+            new PageHeroFeatureModel("Great value", "Carefully selected used caravans at fair prices."),
+            new PageHeroFeatureModel("Part exchange", "Part exchange options may be available.")
+        });
 }
 
-<section class="page-hero">
-    <div class="container">
-        <p class="eyebrow">Used caravans</p>
-        <h1>Quality used caravans for sale in Blackburn</h1>
-        <p class="page-intro">
-            Browse our latest used caravans or contact our sales team to discuss what you are looking for.
-        </p>
-    </div>
-</section>
+<partial name="_PageHero" model="heroModel" />
 
 <section class="section">
     <div class="container">
@@ -41,7 +45,7 @@
 
                     <div class="caravan-footer">
                         <strong>POA</strong>
-                        <a asp-page="/Contact">Enquire</a>
+                        <a asp-page="/Contact/Contact">Enquire</a>
                     </div>
                 </div>
             </article>
@@ -58,7 +62,7 @@
 
                     <div class="caravan-footer">
                         <strong>POA</strong>
-                        <a asp-page="/Contact">Enquire</a>
+                        <a asp-page="/Contact/Contact">Enquire</a>
                     </div>
                 </div>
             </article>
@@ -75,7 +79,7 @@
 
                     <div class="caravan-footer">
                         <strong>Valuation</strong>
-                        <a asp-page="/SellYourCaravan">Sell yours</a>
+                        <a asp-page="/SellYourCaravan/SellYourCaravan">Sell yours</a>
                     </div>
                 </div>
             </article>

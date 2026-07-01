@@ -1,19 +1,22 @@
 ﻿@page
 @model SellYourCaravanModel
+@using BlackburnCaravanServices.Models
 @{
     ViewData["Title"] = "Sell Your Caravan";
+
+    var heroModel = new PageHeroModel(
+        "Sell your caravan",
+        "Sell your caravan with confidence",
+        "We offer a simple, friendly and honest service for customers looking to sell or part exchange their caravan.",
+        new[]
+        {
+            new PageHeroFeatureModel("Free valuation", "Get a fair, no-obligation valuation for your caravan."),
+            new PageHeroFeatureModel("Quick and easy", "We make the selling process straightforward and stress-free."),
+            new PageHeroFeatureModel("Hassle free", "Avoid the uncertainty and inconvenience of private sales.")
+        });
 }
 
-<section class="page-hero">
-    <div class="container">
-        <p class="eyebrow">Sell your caravan</p>
-        <h1>Looking to sell your caravan?</h1>
-        <p class="page-intro">
-            We are always interested in quality used caravans and offer a straightforward,
-            friendly and honest service for customers looking to sell.
-        </p>
-    </div>
-</section>
+<partial name="_PageHero" model="heroModel" />
 
 <section class="section">
     <div class="container service-detail-grid">
@@ -36,7 +39,7 @@
             </div>
 
             <div class="hero-actions">
-                <a asp-page="/Contact" class="button button-primary">
+                <a asp-page="/Contact/Contact" class="button button-primary">
                     Get a valuation
                 </a>
 
