@@ -49,47 +49,55 @@ img {
   position: sticky;
   top: 0;
   z-index: 1000;
-  background: rgba(16, 42, 67, 0.88);
-  backdrop-filter: blur(14px);
+  background: rgba(16, 42, 67, 0.94);
+  backdrop-filter: blur(18px);
   color: white;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .header-inner {
-  min-height: 76px;
+  min-height: 78px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 24px;
+  gap: 32px;
 }
 
 .brand {
   display: flex;
   align-items: center;
-  gap: 12px;
   color: white;
-  font-weight: 800;
   text-decoration: none;
-  font-size: 1.25rem;
 }
 
-.brand-text {
-  letter-spacing: -0.02em;
+.brand-logo {
+  height: 58px;
+  width: auto;
+  display: block;
+  object-fit: contain;
 }
 
 .site-nav {
   display: flex;
   align-items: center;
-  gap: 18px;
+  gap: 22px;
   flex-wrap: wrap;
 }
 
 .site-nav a {
   position: relative;
-  color: white;
+  color: rgba(255, 255, 255, 0.92);
   text-decoration: none;
-  font-weight: 600;
-  transition: color 0.25s ease;
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition:
+          color 0.25s ease,
+          transform 0.25s ease;
+}
+
+.site-nav a:hover {
+  color: var(--colour-amber);
+  transform: translateY(-1px);
 }
 
 .site-nav a::after {
@@ -111,8 +119,9 @@ img {
 .nav-cta {
   background: var(--colour-amber);
   color: #111827 !important;
-  padding: 10px 16px;
+  padding: 12px 18px;
   border-radius: 999px;
+  box-shadow: 0 12px 24px rgba(245, 158, 11, 0.22);
 }
 
 .nav-cta::after {
@@ -200,17 +209,17 @@ h3 {
 .hero {
   position: relative;
   overflow: hidden;
+  min-height: 600px;
+  display: flex;
+  align-items: center;
+  padding: 100px 0 140px;
   background:
           linear-gradient(
                   110deg,
-                  rgba(8, 25, 43, 0.92),
-                  rgba(8, 25, 43, 0.72)
+                  rgba(8, 25, 43, 0.72),
+                  rgba(8, 25, 43, 0.28)
           ),
-          url("../images/caravan-hero.jpg") center / cover no-repeat;
-  padding: 140px 0;
-  min-height: 720px;
-  display: flex;
-  align-items: center;
+          url("../images/caravan-hero.png") center right / cover no-repeat;
 }
 
 .hero::after {
@@ -219,9 +228,9 @@ h3 {
   left: -2px;
   right: -2px;
   bottom: -1px;
-  height: 140px;
+  height: 150px;
   background: white;
-  clip-path: polygon(0 65%, 100% 15%, 100% 100%, 0 100%);
+  clip-path: polygon(0 68%, 100% 24%, 100% 100%, 0 100%);
   pointer-events: none;
 }
 
@@ -229,13 +238,16 @@ h3 {
   position: relative;
   z-index: 2;
   display: grid;
-  grid-template-columns: 1.5fr 0.8fr;
-  gap: 48px;
+  grid-template-columns: 1.45fr 0.85fr;
+  gap: 56px;
   align-items: center;
 }
 
+.hero-content {
+  max-width: 760px;
+}
+
 .hero h1,
-.hero > .container p,
 .hero .hero-text {
   color: white;
 }
@@ -245,10 +257,10 @@ h3 {
 }
 
 .hero-text {
-  font-size: 1.25rem;
-  line-height: 1.6;
+  font-size: 1.2rem;
+  line-height: 1.65;
   max-width: 680px;
-  color: #e5edf5;
+  color: #eef4f8;
 }
 
 .hero-actions {
@@ -260,22 +272,25 @@ h3 {
 
 .hero-card {
   background: rgba(255, 255, 255, 0.96);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  color: #000;
-  padding: 40px;
-  border-radius: 24px;
-  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.22);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  color: #111827;
+  padding: 32px;
+  border-radius: 32px;
+  box-shadow:
+          0 20px 40px rgba(16, 42, 67, 0.12),
+          0 40px 80px rgba(16, 42, 67, 0.18);
+  transform: translateY(32px);
 }
 
 .hero-card h2 {
-  color: #000;
-  font-size: 1.6rem;
+  color: #111827;
+  font-size: 1.55rem;
 }
 
 .hero-card p,
 .hero-card strong {
-  color: #000;
+  color: #111827;
 }
 
 .hero-card strong {
@@ -288,15 +303,15 @@ h3 {
 .page-hero {
   position: relative;
   overflow: hidden;
+  color: white;
+  padding: 130px 0 210px;
   background:
           linear-gradient(
                   110deg,
-                  rgba(8, 25, 43, 0.92),
-                  rgba(8, 25, 43, 0.68)
+                  rgba(8, 25, 43, 0.72),
+                  rgba(8, 25, 43, 0.28)
           ),
-          url("../images/caravan-hero.jpg") center / cover no-repeat;
-  color: white;
-  padding: 140px 0 220px;
+          url("../images/caravan-hero.png") center right / cover no-repeat;
 }
 
 .page-hero::after {
@@ -305,9 +320,9 @@ h3 {
   left: -2px;
   right: -2px;
   bottom: -1px;
-  height: 160px;
+  height: 170px;
   background: white;
-  clip-path: polygon(0 70%, 35% 45%, 100% 15%, 100% 100%, 0 100%);
+  clip-path: polygon(0 68%, 35% 45%, 100% 14%, 100% 100%, 0 100%);
   pointer-events: none;
 }
 
@@ -317,7 +332,7 @@ h3 {
 }
 
 .page-hero-content {
-  max-width: 760px;
+  max-width: 720px;
 }
 
 .page-hero h1 {
@@ -328,7 +343,6 @@ h3 {
   color: white;
   text-shadow: 0 4px 20px rgba(0, 0, 0, 0.35);
 }
-
 
 .page-hero .page-intro {
   max-width: 640px;
@@ -378,15 +392,11 @@ h3 {
   width: 42px;
   height: 42px;
   flex: 0 0 auto;
-
   display: grid;
   place-items: center;
-
   border-radius: 999px;
-
   background: rgba(245, 158, 11, 0.15);
   color: var(--colour-amber);
-
   font-weight: 900;
   font-size: 1rem;
 }
@@ -688,8 +698,7 @@ h3 {
                   var(--colour-blue)
           );
   color: white;
-  box-shadow:
-          0 30px 60px rgba(16, 42, 67, 0.18);
+  box-shadow: 0 30px 60px rgba(16, 42, 67, 0.18);
 }
 
 .cta-panel::before {
@@ -699,7 +708,7 @@ h3 {
   background:
           radial-gradient(
                   circle at top right,
-                  rgba(255,255,255,0.08),
+                  rgba(255, 255, 255, 0.08),
                   transparent 40%
           );
   pointer-events: none;
@@ -712,17 +721,11 @@ h3 {
 .cta-panel .section-intro {
   max-width: 720px;
   margin-inline: auto;
-  color: rgba(255,255,255,0.9);
+  color: rgba(255, 255, 255, 0.9);
 }
 
 .cta-panel .button {
   margin-top: 24px;
-}
-
-@media (max-width: 900px) {
-  .cta-panel {
-    padding: 48px 32px;
-  }
 }
 
 /* Contact */
@@ -809,85 +812,6 @@ h3 {
   box-shadow: 0 0 0 4px rgba(245, 158, 11, 0.15);
 }
 
-/* Responsive */
-
-@media (max-width: 1100px) {
-  .hero-grid,
-  .service-detail-grid,
-  .trust-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .hero-card,
-  .contact-panel {
-    max-width: 640px;
-  }
-
-  .service-grid,
-  .caravan-grid,
-  .hero-feature-grid {
-    grid-template-columns: 1fr 1fr;
-  }
-}
-
-@media (max-width: 900px) {
-  .container {
-    width: min(100% - 32px, 100%);
-  }
-
-  .header-inner {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 20px 0;
-  }
-
-  .site-nav {
-    gap: 14px;
-  }
-
-  h1 {
-    font-size: clamp(3rem, 14vw, 4.8rem);
-  }
-
-  .hero {
-    padding: 100px 0 140px;
-    min-height: auto;
-  }
-
-  .page-hero {
-    padding: 120px 0 180px;
-  }
-
-  .hero-feature-strip {
-    margin-top: -60px;
-  }
-
-  .hero-feature-item {
-    padding: 24px;
-  }
-
-  .feature-list,
-  .form-grid,
-  .service-grid,
-  .caravan-grid,
-  .hero-feature-grid {
-    grid-template-columns: 1fr;
-  }
-
-  .section {
-    padding: 80px 0;
-  }
-
-  .section-heading-split {
-    align-items: flex-start;
-    flex-direction: column;
-  }
-
-  .opening-hours div {
-    flex-direction: column;
-    gap: 4px;
-  }
-}
 /* Footer */
 
 .site-footer {
@@ -927,7 +851,7 @@ h3 {
 .site-footer a {
   color: rgba(255, 255, 255, 0.85);
   text-decoration: none;
-  transition: color .25s ease;
+  transition: color 0.25s ease;
 }
 
 .footer-links a:hover,
@@ -941,10 +865,205 @@ h3 {
   font-size: 0.9rem;
 }
 
+/* Responsive */
+
+@media (max-width: 1100px) {
+  .hero-grid,
+  .service-detail-grid,
+  .trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-card,
+  .contact-panel {
+    max-width: 640px;
+  }
+
+  .service-grid,
+  .caravan-grid,
+  .hero-feature-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
 @media (max-width: 900px) {
+  .container {
+    width: min(100% - 32px, 100%);
+  }
+
+  .site-header {
+    position: relative;
+  }
+
+  .header-inner {
+    align-items: flex-start;
+    flex-direction: column;
+    padding: 20px 0;
+  }
+
+  .brand-logo {
+    height: 56px;
+  }
+
+  .site-nav {
+    gap: 14px;
+  }
+
+  h1 {
+    font-size: clamp(2.4rem, 10vw, 3.6rem);
+  }
+
+  .hero {
+    padding: 90px 0 130px;
+    min-height: auto;
+  }
+
+  .hero-grid {
+    gap: 36px;
+  }
+
+  .page-hero {
+    padding: 110px 0 170px;
+  }
+
+  .page-hero h1 {
+    font-size: clamp(2.2rem, 9vw, 3.2rem);
+  }
+
+  .hero-feature-strip {
+    margin-top: -60px;
+  }
+
+  .hero-feature-item {
+    padding: 24px;
+  }
+
+  .feature-list,
+  .form-grid,
+  .service-grid,
+  .caravan-grid,
+  .hero-feature-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .section {
+    padding: 80px 0;
+  }
+
+  .section-heading-split {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .cta-panel {
+    padding: 48px 32px;
+  }
+
+  .opening-hours div {
+    flex-direction: column;
+    gap: 4px;
+  }
+
   .footer-grid {
     grid-template-columns: 1fr;
     gap: 40px;
     padding: 60px 0;
   }
+}
+/* Homepage premium feature strip */
+.home-feature-strip {
+  position: relative;
+  z-index: 5;
+  margin-top: -96px;
+  padding-bottom: 18px;
+}
+
+.section-home-services {
+  padding-top: 18px;
+}
+
+.home-feature-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 26px;
+}
+
+.home-feature-card {
+  min-height: 150px;
+  padding: 30px 30px 28px;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.96);
+  box-shadow:
+          0 30px 60px rgba(16, 42, 67, 0.14),
+          0 8px 20px rgba(16, 42, 67, 0.06);
+  backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.72);
+}
+
+.home-feature-card h3 {
+  margin: 0 0 12px;
+  color: var(--colour-navy);
+  font-size: 1.15rem;
+}
+
+.home-feature-card p {
+  margin: 0;
+  color: var(--colour-muted);
+  line-height: 1.65;
+}
+
+.section-home-services {
+  padding-top: 18px;
+}
+
+@media (max-width: 900px) {
+  .home-feature-strip {
+    margin-top: -36px;
+  }
+
+  .home-feature-grid {
+    grid-template-columns: 1fr;
+  }
+}
+.hero h1 {
+  max-width: 860px;
+  font-size: clamp(3rem, 4.7vw, 4.4rem);
+  line-height: 1.04;
+}
+/* Header polish */
+.site-nav {
+  gap: 2.4rem;
+}
+
+.site-nav a {
+  position: relative;
+  transition:
+          color 0.25s ease,
+          transform 0.25s ease;
+}
+
+.site-nav a:hover {
+  color: var(--colour-amber);
+  transform: translateY(-1px);
+}
+
+.site-nav a:not(.nav-cta)::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -10px;
+  height: 3px;
+  background: var(--colour-amber);
+  border-radius: 999px;
+  opacity: 0;
+  transform: scaleX(0.4);
+  transition:
+          opacity 0.25s ease,
+          transform 0.25s ease;
+}
+
+.site-nav a:not(.nav-cta):hover::after {
+  opacity: 1;
+  transform: scaleX(1);
 }
