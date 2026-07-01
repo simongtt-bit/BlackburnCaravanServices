@@ -16,6 +16,13 @@
             new PageHeroFeatureModel("Bodywork repairs", "Repairs for panels, trims and exterior damage."),
             new PageHeroFeatureModel("Internal repairs", "Woodwork, flooring, fittings and general internal repair work.")
         });
+    
+    var ctaModel = new CallToActionModel(
+        "Need a repair?",
+        "Request a caravan repair quote",
+        "Speak to our repairs team about damp work, bodywork, internal repairs or general caravan issues.",
+        "Request a quote",
+        "/Contact/Contact");
 }
 
 <partial name="_PageHero" model="heroModel" />
@@ -104,3 +111,4 @@
         </div>
     </div>
 </section>
+<partial name="_CallToAction" model="ctaModel" />

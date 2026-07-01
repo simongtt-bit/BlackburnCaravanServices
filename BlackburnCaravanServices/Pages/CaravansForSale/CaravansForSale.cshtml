@@ -14,6 +14,13 @@
             new PageHeroFeatureModel("Fairly priced stock", "Carefully selected caravans with clear, honest information."),
             new PageHeroFeatureModel("Part exchange options", "Part exchange may be available depending on your caravan.")
         });
+    
+    var ctaModel = new CallToActionModel(
+        "Looking for a caravan?",
+        "Speak to our sales team",
+        "We regularly update our stock and can help you find the right caravan for your needs and budget.",
+        "Contact sales",
+        "/Contact/Contact");
 }
 
 <partial name="_PageHero" model="heroModel" />
@@ -86,3 +93,4 @@
         </div>
     </div>
 </section>
+<partial name="_CallToAction" model="ctaModel" />

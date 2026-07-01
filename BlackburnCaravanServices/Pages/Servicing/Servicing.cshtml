@@ -13,6 +13,13 @@
             new PageHeroFeatureModel("Gas and electrical checks", "Safety-focused inspections carried out with care and attention."),
             new PageHeroFeatureModel("Ready for the road", "Practical servicing to help prevent issues before your next journey.")
         ]);
+    
+    var ctaModel = new CallToActionModel(
+        "Need help?",
+        "Book your caravan service today",
+        "Speak to our experienced team to arrange servicing, inspections or general maintenance for your caravan.",
+        "Contact us",
+        "/Contact/Contact");
 }
 
 <partial name="_PageHero" model="heroModel" />
@@ -68,3 +75,5 @@
         </aside>
     </div>
 </section>
+
+<partial name="_CallToAction" model="ctaModel" />

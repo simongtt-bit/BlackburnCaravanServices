@@ -37,20 +37,51 @@
 </div>
 
 <footer class="site-footer">
-    <div class="container footer-inner">
+    <div class="container footer-grid">
 
         <div>
-            <strong>Blackburn Caravan Services</strong>
+            <h3>Blackburn Caravan Services</h3>
+
             <p>
-                Professional caravan servicing, repairs and sales in Blackburn.
+                Professional caravan servicing, repairs, valeting and used caravan sales
+                from our workshops in Blackburn.
             </p>
         </div>
 
         <div>
-            <p>Unit D2, Percliff Way, Blackburn, BB1 5PF</p>
-            <p>© @DateTime.Now.Year Blackburn Caravan Services</p>
+            <h4>Services</h4>
+
+            <ul class="footer-links">
+                <li><a asp-page="/Servicing/Servicing">Servicing</a></li>
+                <li><a asp-page="/Repairs/Repairs">Repairs</a></li>
+                <li><a asp-page="/Valeting/Valeting">Valeting</a></li>
+                <li><a asp-page="/CaravansForSale/CaravansForSale">Used Caravans</a></li>
+            </ul>
         </div>
 
+        <div>
+            <h4>Contact</h4>
+
+            <p>
+                Unit D2, Percliff Way<br />
+                Blackburn<br />
+                BB1 5PF
+            </p>
+
+            <p>
+                <a href="tel:01254957013">01254 957013</a><br />
+                <a href="mailto:info@blackburncaravanservices.co.uk">
+                    info@blackburncaravanservices.co.uk
+                </a>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="footer-bottom">
+        <div class="container">
+            © @DateTime.Now.Year Blackburn Caravan Services. All rights reserved.
+        </div>
     </div>
 </footer>
 

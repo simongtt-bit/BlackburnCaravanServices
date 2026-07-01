@@ -1,0 +1,29 @@
+﻿@model BlackburnCaravanServices.Models.CallToActionModel
+
+<section class="cta-section">
+    <div class="container">
+
+        <div class="cta-panel">
+
+            <p class="eyebrow">
+                @Model.Eyebrow
+            </p>
+
+            <h2>
+                @Model.Title
+            </h2>
+
+            <p class="section-intro">
+                @Model.Description
+            </p>
+
+            <a
+                href="@Model.Url"
+                class="button button-primary">
+                @Model.ButtonText
+            </a>
+
+        </div>
+
+    </div>
+</section>

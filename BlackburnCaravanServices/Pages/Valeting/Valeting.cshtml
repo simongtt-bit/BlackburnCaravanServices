@@ -14,6 +14,14 @@
             new PageHeroFeatureModel("Interior refresh", "Interior cleaning to help your caravan feel fresh, tidy and ready to use."),
             new PageHeroFeatureModel("Pre-sale preparation", "Ideal before holidays, storage, viewings or selling your caravan.")
         });
+    
+    var ctaModel = new CallToActionModel(
+        "Need a valet?",
+        "Book a professional caravan valet",
+        "Get your caravan cleaned, refreshed and ready for the season, storage or sale.",
+        "Book a valet",
+        "/Contact/Contact");
+    
 }
 
 <partial name="_PageHero" model="heroModel" />
@@ -69,3 +77,4 @@
         </aside>
     </div>
 </section>
+<partial name="_CallToAction" model="ctaModel" />

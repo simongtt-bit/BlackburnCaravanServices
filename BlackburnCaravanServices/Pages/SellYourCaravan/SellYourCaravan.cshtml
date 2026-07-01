@@ -14,6 +14,13 @@
             new PageHeroFeatureModel("Simple process", "Straightforward support from first enquiry through to completion."),
             new PageHeroFeatureModel("Part exchange options", "Part exchange may be available if you are looking for another caravan.")
         });
+    
+    var ctaModel = new CallToActionModel(
+        "Thinking of selling?",
+        "Get a free caravan valuation",
+        "Our team can provide friendly advice and a fair valuation for your caravan.",
+        "Get a valuation",
+        "/Contact/Contact");
 }
 
 <partial name="_PageHero" model="heroModel" />
@@ -105,3 +112,4 @@
         </div>
     </div>
 </section>
+<partial name="_CallToAction" model="ctaModel" />
