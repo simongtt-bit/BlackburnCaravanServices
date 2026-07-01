@@ -1,0 +1,84 @@
+﻿@page
+@model CaravansForSaleModel
+@{
+    ViewData["Title"] = "Caravans for Sale";
+}
+
+<section class="page-hero">
+    <div class="container">
+        <p class="eyebrow">Used caravans</p>
+        <h1>Quality used caravans for sale in Blackburn</h1>
+        <p class="page-intro">
+            Browse our latest used caravans or contact our sales team to discuss what you are looking for.
+        </p>
+    </div>
+</section>
+
+<section class="section">
+    <div class="container">
+        <div class="section-heading-split">
+            <div>
+                <p class="eyebrow">Current stock</p>
+                <h2>Available caravans</h2>
+                <p class="section-intro">
+                    Our stock changes regularly. Please call before travelling to check availability.
+                </p>
+            </div>
+
+            <a href="tel:01254957013" class="button button-primary">Call sales</a>
+        </div>
+
+        <div class="caravan-grid">
+            <article class="caravan-card">
+                <span class="caravan-badge">Available</span>
+                <img src="/images/caravans/caravan-1.jpg" alt="Used caravan for sale" />
+                <div class="caravan-card-content">
+                    <p class="caravan-meta">Used caravan</p>
+                    <h3>Caravan details coming soon</h3>
+                    <p>
+                        We will update this listing with the make, model, year, berth and condition details.
+                    </p>
+
+                    <div class="caravan-footer">
+                        <strong>POA</strong>
+                        <a asp-page="/Contact">Enquire</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="caravan-card">
+                <span class="caravan-badge">Available</span>
+                <img src="/images/caravans/caravan-2.jpg" alt="Used caravan for sale" />
+                <div class="caravan-card-content">
+                    <p class="caravan-meta">Used caravan</p>
+                    <h3>Caravan details coming soon</h3>
+                    <p>
+                        More stock will be added here as caravans become available.
+                    </p>
+
+                    <div class="caravan-footer">
+                        <strong>POA</strong>
+                        <a asp-page="/Contact">Enquire</a>
+                    </div>
+                </div>
+            </article>
+
+            <article class="caravan-card">
+                <span class="caravan-badge">Wanted</span>
+                <img src="/images/caravans/caravan-3.jpg" alt="Sell your caravan" />
+                <div class="caravan-card-content">
+                    <p class="caravan-meta">Sell to us</p>
+                    <h3>Looking to sell your caravan?</h3>
+                    <p>
+                        We are always interested in quality used caravans. Contact us for a fair valuation.
+                    </p>
+
+                    <div class="caravan-footer">
+                        <strong>Valuation</strong>
+                        <a asp-page="/SellYourCaravan">Sell yours</a>
+                    </div>
+                </div>
+            </article>
+        </div>
+    </div>
+</section>
