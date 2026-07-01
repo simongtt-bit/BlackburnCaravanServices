@@ -552,27 +552,51 @@ h3 {
 }
 
 /* Page hero */
-
 .page-hero {
-  padding: 140px 0 80px;
+  position: relative;
+  overflow: hidden;
   background:
           linear-gradient(
-                  180deg,
-                  rgba(16,42,67,0.96),
-                  rgba(16,42,67,0.88)
-          );
+                  110deg,
+                  rgba(8, 25, 43, 0.92),
+                  rgba(8, 25, 43, 0.66)
+          ),
+          url("/images/caravan-hero.jpg");
+
+  background-size: cover;
+  background-position: center;
   color: white;
+  padding: 130px 0 190px;
+}
+
+.page-hero::after {
+  content: "";
+  position: absolute;
+  left: -2px;
+  right: -2px;
+  bottom: -1px;
+  height: 140px;
+  background: white;
+  clip-path: polygon(0 65%, 100% 15%, 100% 100%, 0 100%);
+  pointer-events: none;
+}
+
+.page-hero .container {
+  position: relative;
+  z-index: 2;
 }
 
 .page-hero h1 {
-  max-width: 900px;
+  max-width: 760px;
+  color: white;
+  text-shadow: 0 4px 20px rgba(0,0,0,0.35);
 }
 
 .page-intro {
   max-width: 720px;
   font-size: 1.2rem;
   line-height: 1.7;
-  color: rgba(255,255,255,0.82);
+  color: rgba(255,255,255,0.9);
 }
 
 /* Footer */

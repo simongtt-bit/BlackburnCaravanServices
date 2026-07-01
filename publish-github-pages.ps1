@@ -26,9 +26,9 @@ $CssPath = Join-Path $OutputDir "css\site.css"
 if (Test-Path $CssPath) {
     $Css = Get-Content $CssPath -Raw
 
-    $Css = $Css `
-        -replace 'url\("/images/', 'url("../images/' `
-        -replace "url\('/images/", "url('../images/"
+  $Css = $Css `
+    -replace 'url\("/images/', 'url("../images/' `
+    -replace "url\('/images/", "url('../images/"
 
     Set-Content -Path $CssPath -Value $Css -Encoding UTF8
 }
