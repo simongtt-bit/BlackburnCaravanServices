@@ -70,40 +70,54 @@
             </p>
         </div>
 
-        <form class="contact-form">
+        <form class="contact-form"
+              action="https://formspree.io/f/mbdvpljz"
+              method="POST">
+
             <div class="form-grid">
                 <div class="form-row">
                     <label for="name">Name</label>
-                    <input id="name" type="text" placeholder="Your name" />
+                    <input id="name" name="name" type="text" placeholder="Your name" required />
                 </div>
 
                 <div class="form-row">
                     <label for="phone">Phone number</label>
-                    <input id="phone" type="tel" placeholder="Your phone number" />
+                    <input id="phone" name="phone" type="tel" placeholder="Your phone number" />
                 </div>
 
                 <div class="form-row">
                     <label for="email">Email address</label>
-                    <input id="email" type="email" placeholder="Your email address" />
+                    <input id="email" name="email" type="email" placeholder="Your email address" required />
                 </div>
 
                 <div class="form-row">
                     <label for="type">Enquiry type</label>
-                    <select id="type">
-                        <option>Servicing</option>
-                        <option>Repairs</option>
-                        <option>Used caravans</option>
-                        <option>Sell your caravan</option>
-                        <option>Valeting</option>
-                        <option>General enquiry</option>
+                    <select id="type" name="enquiryType" required>
+                        <option value="">Select an enquiry type</option>
+                        <option value="Servicing">Servicing</option>
+                        <option value="Repairs">Repairs</option>
+                        <option value="Used caravans">Used caravans</option>
+                        <option value="Sell your caravan">Sell your caravan</option>
+                        <option value="Valeting">Valeting</option>
+                        <option value="General enquiry">General enquiry</option>
                     </select>
                 </div>
             </div>
 
             <div class="form-row">
                 <label for="message">Message</label>
-                <textarea id="message" rows="6" placeholder="Tell us how we can help..."></textarea>
+                <textarea id="message"
+                  name="message"
+                  rows="6"
+                  placeholder="Tell us how we can help..."
+                  required></textarea>
             </div>
+
+            <input type="hidden" name="_subject" value="New enquiry from Blackburn Caravan Services website" />
+            <input
+                type="hidden"
+                name="_next"
+                value="https://localhost:7040/ThankYou" />
 
             <button type="submit" class="button button-primary">
                 Send enquiry
