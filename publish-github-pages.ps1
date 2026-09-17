@@ -63,4 +63,9 @@ foreach ($Page in $Pages) {
 
 New-Item -Path ".\docs\.nojekyll" -ItemType File -Force | Out-Null
 
+Set-Content `
+    -Path ".\docs\CNAME" `
+    -Value "www.blackburncaravanservices.co.uk" `
+    -Encoding ASCII
+
 Write-Host "Static site exported to /docs"
