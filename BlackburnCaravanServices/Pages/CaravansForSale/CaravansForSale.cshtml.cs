@@ -1,11 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc.RazorPages;
+﻿using BlackburnCaravanServices.Data;
+using BlackburnCaravanServices.Models;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
 
 namespace BlackburnCaravanServices.Pages.CaravansForSale;
 
-public class CaravansForSaleModel : PageModel
+public class CaravansForSaleModel(CaravanDbContext dbContext) : PageModel
 {
-    public void OnGet()
+    public IReadOnlyList<Caravan> Caravans { get; private set; } = [];
+
+    public async Task OnGetAsync(CancellationToken cancellationToken)
     {
-        
+        Caravans = await dbContext.Caravans
+            .AsNoTracking()
+            .Include(x => x.Images)
+            .Where(x => x.IsPublished)
+            .OrderByDescending(x => x.CreatedAt)
+            .ToListAsync(cancellationToken);
     }
 }

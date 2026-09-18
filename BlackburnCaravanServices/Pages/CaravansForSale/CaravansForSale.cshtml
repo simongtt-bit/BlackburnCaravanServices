@@ -1,6 +1,7 @@
 ﻿@page
 @model CaravansForSaleModel
 @using BlackburnCaravanServices.Models
+
 @{
     ViewData["Title"] = "Caravans for Sale";
 
@@ -10,11 +11,20 @@
         "Browse our latest used caravans or speak to our sales team for friendly advice on finding the right caravan.",
         new[]
         {
-            new PageHeroFeatureModel("Checked before sale", "Used caravans are inspected before being offered for sale."),
-            new PageHeroFeatureModel("Fairly priced stock", "Carefully selected caravans with clear, honest information."),
-            new PageHeroFeatureModel("Part exchange options", "Part exchange may be available depending on your caravan.")
+            new PageHeroFeatureModel(
+                "Checked before sale",
+                "Used caravans are inspected before being offered for sale."
+            ),
+            new PageHeroFeatureModel(
+                "Fairly priced stock",
+                "Carefully selected caravans with clear, honest information."
+            ),
+            new PageHeroFeatureModel(
+                "Part exchange options",
+                "Part exchange may be available depending on your caravan."
+            )
         });
-    
+
     var ctaModel = new CallToActionModel(
         "Looking for a caravan?",
         "Speak to our sales team",
@@ -36,61 +46,94 @@
                 </p>
             </div>
 
-            <a href="tel:01254957013" class="button button-primary">Call sales</a>
+            <a href="tel:01254957013" class="button button-primary">
+                Call sales
+            </a>
         </div>
 
-        <div class="caravan-grid">
-            <article class="caravan-card">
-                <span class="caravan-badge">Available</span>
-                <img src="/images/caravans/caravan-1.jpg" alt="Used caravan for sale" />
-                <div class="caravan-card-content">
-                    <p class="caravan-meta">Used caravan</p>
-                    <h3>Caravan details coming soon</h3>
-                    <p>
-                        We will update this listing with the make, model, year, berth and condition details.
-                    </p>
+        @if (Model.Caravans.Count == 0)
+        {
+            <div class="caravan-empty">
+                <h3>No caravans currently advertised</h3>
+                <p>
+                    Our stock changes regularly. Please contact us to find out
+                    what we currently have available.
+                </p>
 
-                    <div class="caravan-footer">
-                        <strong>POA</strong>
-                        <a asp-page="/Contact/Contact">Enquire</a>
-                    </div>
-                </div>
-            </article>
+                <a asp-page="/Contact/Contact"
+                   class="button button-primary">
+                    Contact sales
+                </a>
+            </div>
+        }
+        else
+        {
+            <div class="caravan-grid">
+                @foreach (var caravan in Model.Caravans)
+                {
+                    var primaryImage = caravan.Images
+                        .OrderBy(x => x.SortOrder)
+                        .FirstOrDefault();
 
-            <article class="caravan-card">
-                <span class="caravan-badge">Available</span>
-                <img src="/images/caravans/caravan-2.jpg" alt="Used caravan for sale" />
-                <div class="caravan-card-content">
-                    <p class="caravan-meta">Used caravan</p>
-                    <h3>Caravan details coming soon</h3>
-                    <p>
-                        More stock will be added here as caravans become available.
-                    </p>
+                    <article class="caravan-card">
 
-                    <div class="caravan-footer">
-                        <strong>POA</strong>
-                        <a asp-page="/Contact/Contact">Enquire</a>
-                    </div>
-                </div>
-            </article>
+                        @if (caravan.IsSold)
+                        {
+                            <span class="caravan-badge">Sold</span>
+                        }
+                        else
+                        {
+                            <span class="caravan-badge">Available</span>
+                        }
 
-            <article class="caravan-card">
-                <span class="caravan-badge">Wanted</span>
-                <img src="/images/caravans/caravan-3.jpg" alt="Sell your caravan" />
-                <div class="caravan-card-content">
-                    <p class="caravan-meta">Sell to us</p>
-                    <h3>Looking to sell your caravan?</h3>
-                    <p>
-                        We are always interested in quality used caravans. Contact us for a fair valuation.
-                    </p>
+                        @if (primaryImage is not null)
+                        {
+                            <img src="/CaravanImages/Image/@primaryImage.Id"
+                                 alt="@caravan.Make @caravan.Model" />
+                        }
 
-                    <div class="caravan-footer">
-                        <strong>Valuation</strong>
-                        <a asp-page="/SellYourCaravan/SellYourCaravan">Sell yours</a>
-                    </div>
-                </div>
-            </article>
-        </div>
+                        <div class="caravan-card-content">
+
+                            <p class="caravan-meta">
+                                @if (caravan.Year.HasValue)
+                                {
+                                    <span>@caravan.Year.Value</span>
+                                }
+
+                                @if (caravan.Berths.HasValue)
+                                {
+                                    <span>
+                                        · @caravan.Berths.Value berth
+                                    </span>
+                                }
+                            </p>
+
+                            <h3>
+                                @caravan.Make @caravan.Model
+                            </h3>
+
+                            @if (!string.IsNullOrWhiteSpace(caravan.Description))
+                            {
+                                <p>
+                                    @caravan.Description
+                                </p>
+                            }
+
+                            <div class="caravan-footer">
+                                <strong>
+                                    £@caravan.Price.ToString("N0")
+                                </strong>
+
+                                <a asp-page="/Contact/Contact">
+                                    Enquire
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+                }
+            </div>
+        }
     </div>
 </section>
+
 <partial name="_CallToAction" model="ctaModel" />
