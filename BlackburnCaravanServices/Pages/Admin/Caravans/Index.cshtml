@@ -1,0 +1,74 @@
+﻿@page
+@model BlackburnCaravanServices.Pages.Admin.Caravans.IndexModel
+
+@{
+    ViewData["Title"] = "Manage caravans";
+}
+
+<div class="container py-4">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <div>
+            <h1>Manage caravans</h1>
+            <p>Add, edit and manage caravans advertised on the website.</p>
+        </div>
+
+        <a asp-page="./Create" class="btn btn-primary">
+            Add caravan
+        </a>
+    </div>
+
+    @if (Model.Caravans.Count == 0)
+    {
+        <div class="alert alert-info">
+            There are currently no caravans.
+        </div>
+    }
+    else
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Caravan</th>
+                    <th>Year</th>
+                    <th>Berths</th>
+                    <th>Price</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+            @foreach (var caravan in Model.Caravans)
+            {
+                <tr>
+                    <td>
+                        <strong>@caravan.Make @caravan.Model</strong>
+                    </td>
+                    <td>@caravan.Year</td>
+                    <td>@caravan.Berths</td>
+                    <td>£@caravan.Price.ToString("N0")</td>
+                    <td>
+                        @if (caravan.IsSold)
+                        {
+                            <span>Sold</span>
+                        }
+                        else if (caravan.IsPublished)
+                        {
+                            <span>Published</span>
+                        }
+                        else
+                        {
+                            <span>Draft</span>
+                        }
+                    </td>
+                    <td>
+                        <a asp-page="./Edit"
+                           asp-route-id="@caravan.Id">
+                            Edit
+                        </a>
+                    </td>
+                </tr>
+            }
+            </tbody>
+        </table>
+    }
+</div>

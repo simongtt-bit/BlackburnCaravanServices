@@ -2,9 +2,16 @@ using Azure.Identity;
 using Azure.Storage.Blobs;
 using BlackburnCaravanServices.Data;
 using BlackburnCaravanServices.Services;
+using Microsoft.AspNetCore.Authentication.OpenIdConnect;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Identity.Web;
 
 var builder = WebApplication.CreateBuilder(args);
+
+// Authentication
+builder.Services
+    .AddAuthentication(OpenIdConnectDefaults.AuthenticationScheme)
+    .AddMicrosoftIdentityWebApp(builder.Configuration.GetSection("AzureAd"));
 
 // Add services to the container.
 builder.Services.AddRazorPages();
@@ -17,7 +24,17 @@ var connectionString =
     );
 
 builder.Services.AddDbContext<CaravanDbContext>(options =>
-    options.UseSqlServer(connectionString)
+    options.UseSqlServer(
+        connectionString,
+        sqlOptions =>
+        {
+            sqlOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null
+            );
+        }
+    )
 );
 
 // Azure Blob Storage
@@ -49,6 +66,7 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapRazorPages();

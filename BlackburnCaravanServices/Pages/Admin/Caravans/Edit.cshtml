@@ -1,0 +1,151 @@
+﻿@page "{id:int}"
+@model BlackburnCaravanServices.Pages.Admin.Caravans.EditModel
+
+@{
+    ViewData["Title"] = "Edit caravan";
+}
+
+<div class="container py-4">
+    <h1>Edit caravan</h1>
+
+    <p>Update the caravan details, photos and status.</p>
+
+    <form method="post" enctype="multipart/form-data">
+        <input asp-for="Input.Id" type="hidden" />
+
+        <div asp-validation-summary="ModelOnly"
+             class="text-danger mb-3"></div>
+
+        <div class="mb-3">
+            <label asp-for="Input.Make" class="form-label"></label>
+            <input asp-for="Input.Make" class="form-control" />
+            <span asp-validation-for="Input.Make"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Input.Model" class="form-label"></label>
+            <input asp-for="Input.Model" class="form-control" />
+            <span asp-validation-for="Input.Model"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Input.Year" class="form-label"></label>
+            <input asp-for="Input.Year" class="form-control" />
+            <span asp-validation-for="Input.Year"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Input.Berths" class="form-label"></label>
+            <input asp-for="Input.Berths" class="form-control" />
+            <span asp-validation-for="Input.Berths"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-3">
+            <label asp-for="Input.Price" class="form-label"></label>
+            <input asp-for="Input.Price" class="form-control" />
+            <span asp-validation-for="Input.Price"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Input.Description"
+                   class="form-label"></label>
+
+            <textarea asp-for="Input.Description"
+                      class="form-control"
+                      rows="6"></textarea>
+        </div>
+
+        <h2 class="h4 mb-3">Photos</h2>
+
+        @if (Model.ExistingImages.Count == 0)
+        {
+            <div class="alert alert-info mb-4">
+                This caravan does not currently have any photos.
+            </div>
+        }
+        else
+        {
+            <div class="row g-3 mb-4">
+                @foreach (var image in Model.ExistingImages)
+                {
+                    <div class="col-6 col-md-4 col-lg-3">
+                        <div class="card h-100">
+                            <img src="/CaravanImages/Image/@image.Id"
+                                 class="card-img-top"
+                                 alt="@Model.Input.Make @Model.Input.Model"
+                                 style="height: 180px; object-fit: cover;" />
+
+                            <div class="card-body">
+                                <button type="submit"
+                                        asp-page-handler="DeleteImage"
+                                        asp-route-id="@Model.Input.Id"
+                                        asp-route-imageId="@image.Id"
+                                        class="btn btn-outline-danger btn-sm"
+                                        onclick="return confirm('Delete this photo?');">
+                                    Delete photo
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+
+        <div class="mb-4">
+            <label asp-for="Images" class="form-label">
+                Add more photos
+            </label>
+
+            <input asp-for="Images"
+                   type="file"
+                   class="form-control"
+                   accept="image/jpeg,image/png,image/webp"
+                   multiple />
+
+            <div class="form-text">
+                Select one or more JPEG, PNG or WebP images.
+                Maximum 10 MB per image.
+            </div>
+
+            <span asp-validation-for="Images"
+                  class="text-danger"></span>
+        </div>
+
+        <div class="form-check mb-3">
+            <input asp-for="Input.IsPublished"
+                   class="form-check-input" />
+
+            <label asp-for="Input.IsPublished"
+                   class="form-check-label">
+                Published
+            </label>
+        </div>
+
+        <div class="form-check mb-4">
+            <input asp-for="Input.IsSold"
+                   class="form-check-input" />
+
+            <label asp-for="Input.IsSold"
+                   class="form-check-label">
+                Sold
+            </label>
+        </div>
+
+        <button type="submit" class="btn btn-primary">
+            Save changes
+        </button>
+
+        <a asp-page="./Index" class="btn btn-secondary">
+            Cancel
+        </a>
+    </form>
+</div>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

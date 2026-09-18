@@ -3,6 +3,11 @@ using Azure.Storage.Blobs.Models;
 
 namespace BlackburnCaravanServices.Services;
 
+public record CaravanImageUploadResult(
+    string BlobName,
+    string ImageUrl
+);
+
 public class CaravanImageStorageService(
     BlobServiceClient blobServiceClient,
     IConfiguration configuration
@@ -13,7 +18,7 @@ public class CaravanImageStorageService(
             configuration["AzureStorage:ContainerName"] ?? "caravan-images"
         );
 
-    public async Task<string> UploadAsync(
+    public async Task<CaravanImageUploadResult> UploadAsync(
         Stream stream,
         string fileName,
         string contentType,
@@ -21,19 +26,18 @@ public class CaravanImageStorageService(
     )
     {
         var blobName = $"{Guid.NewGuid():N}{Path.GetExtension(fileName)}";
-
         var blob = _container.GetBlobClient(blobName);
 
         await blob.UploadAsync(
             stream,
-            new BlobHttpHeaders
-            {
-                ContentType = contentType
-            },
+            new BlobHttpHeaders { ContentType = contentType },
             cancellationToken: cancellationToken
         );
 
-        return blob.Uri.ToString();
+        return new CaravanImageUploadResult(
+            blobName,
+            blob.Uri.ToString()
+        );
     }
 
     public async Task DeleteAsync(
