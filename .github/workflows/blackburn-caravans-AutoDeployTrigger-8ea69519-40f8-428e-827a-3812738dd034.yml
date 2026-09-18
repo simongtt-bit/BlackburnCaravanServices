@@ -31,8 +31,9 @@ jobs:
         with:
           appSourcePath: ${{ github.workspace }}
           dockerfilePath: Dockerfile
+          registryUrl: acrblackburncaravans.azurecr.io
           registryUsername: ${{ secrets.BLACKBURNCARAVANS_REGISTRY_USERNAME }}
           registryPassword: ${{ secrets.BLACKBURNCARAVANS_REGISTRY_PASSWORD }}
           containerAppName: blackburn-caravans
           resourceGroup: rg-blackburn-caravans-prod
-          imageToBuild: default/blackburn-caravans:${{ github.sha }}
+          imageToBuild: acrblackburncaravans.azurecr.io/blackburn-caravans:${{ github.sha }}
