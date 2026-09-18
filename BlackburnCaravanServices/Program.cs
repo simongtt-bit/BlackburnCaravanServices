@@ -1,7 +1,39 @@
+using Azure.Identity;
+using Azure.Storage.Blobs;
+using BlackburnCaravanServices.Data;
+using BlackburnCaravanServices.Services;
+using Microsoft.EntityFrameworkCore;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+
+// Database
+var connectionString =
+    builder.Configuration["SQL_CONNECTION_STRING"]
+    ?? throw new InvalidOperationException(
+        "SQL_CONNECTION_STRING was not found."
+    );
+
+builder.Services.AddDbContext<CaravanDbContext>(options =>
+    options.UseSqlServer(connectionString)
+);
+
+// Azure Blob Storage
+var storageAccountName = builder.Configuration["AzureStorage:AccountName"];
+
+if (!string.IsNullOrWhiteSpace(storageAccountName))
+{
+    builder.Services.AddSingleton(
+        new BlobServiceClient(
+            new Uri($"https://{storageAccountName}.blob.core.windows.net"),
+            new DefaultAzureCredential()
+        )
+    );
+}
+
+builder.Services.AddScoped<CaravanImageStorageService>();
 
 var app = builder.Build();
 
@@ -9,7 +41,6 @@ var app = builder.Build();
 if (!app.Environment.IsDevelopment())
 {
     app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
