@@ -3,7 +3,7 @@ name: Deploy Blackburn Caravans
 on:
   push:
     branches:
-      - main
+      - feature/azure-admin
 
   workflow_dispatch:
 
